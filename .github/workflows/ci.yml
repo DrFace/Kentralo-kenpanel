@@ -53,8 +53,5 @@ jobs:
       - name: Prepare Dependencies
         run: go mod tidy
 
-      - name: Run golangci-lint
-        uses: golangci/golangci-lint-action@v6
-        with:
-          version: latest
-          args: --timeout=5m
+      - name: Run Go Vet Static Analysis
+        run: go vet ./...

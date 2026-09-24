@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Kentralo/kenpanel/core/config"
+	"github.com/DrFace/Kentralo-kenpanel/core/config"
 	"github.com/spf13/cobra"
 )
 

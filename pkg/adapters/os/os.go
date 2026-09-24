@@ -3,7 +3,7 @@ package os
 import (
 	"context"
 
-	"github.com/Kentralo/kenpanel/pkg/protocol"
+	"github.com/DrFace/Kentralo-kenpanel/pkg/protocol"
 )
 
 // OSAdapter defines the uniform contract across all supported operating systems.

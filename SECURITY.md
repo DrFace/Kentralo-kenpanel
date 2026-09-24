@@ -21,7 +21,7 @@ Only the latest release channel and the most recent patch releases receive secur
 To report a vulnerability responsibly:
 
 1. **GitHub Private Vulnerability Reporting (Preferred)**:
-   Navigate to the [Security Advisory page](https://github.com/Kentralo/kenpanel/security/advisories) on GitHub and click **"Report a vulnerability"**. This initiates a confidential disclosure thread with our core security team.
+   Navigate to the [Security Advisory page](https://github.com/DrFace/Kentralo-kenpanel/security/advisories) on GitHub and click **"Report a vulnerability"**. This initiates a confidential disclosure thread with our core security team.
 2. **Security Email**:
    If GitHub Private Vulnerability Reporting is unavailable, email our security team directly at:
    `security@kentralo.com`

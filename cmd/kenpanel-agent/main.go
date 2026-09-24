@@ -8,8 +8,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/Kentralo/kenpanel/core/config"
-	"github.com/Kentralo/kenpanel/pkg/protocol"
+	"github.com/DrFace/Kentralo-kenpanel/core/config"
+	"github.com/DrFace/Kentralo-kenpanel/pkg/protocol"
 )
 
 func main() {

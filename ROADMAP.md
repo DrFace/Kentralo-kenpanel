@@ -6,7 +6,7 @@
 ---
 
 ## Phase 0: Foundations & Architecture Baseline (:white_check_mark: Completed)
-- [x] Canonical monorepo structure (`Kentralo/kenpanel`) and private static website (`kenpanel.kentralo.com`).
+- [x] Canonical monorepo structure (`DrFace/Kentralo-kenpanel`) and private static website (`kenpanel.kentralo.com`).
 - [x] Machine-readable requirement and capability registry schema.
 - [x] Domain models for Servers, Organizations, Websites, Databases, DNS, and Mail.
 - [x] Secure mTLS agent communication protocol and Unix socket privilege separation.

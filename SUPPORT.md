@@ -5,8 +5,8 @@ KenPanel is free and open-source software built and maintained by Kentralo and c
 ## Community Support Channels
 
 - **Documentation & Guides**: [kenpanel.kentralo.com/docs](https://kenpanel.kentralo.com/docs) and [kenpanel.kentralo.com/guides](https://kenpanel.kentralo.com/guides)
-- **GitHub Discussions**: [Kentralo/kenpanel Discussions](https://github.com/Kentralo/kenpanel/discussions) for general questions, troubleshooting, and architectural discussions.
-- **GitHub Issues**: Use [GitHub Issues](https://github.com/Kentralo/kenpanel/issues) for verified bugs, compatibility reports, and feature requests.
+- **GitHub Discussions**: [DrFace/Kentralo-kenpanel Discussions](https://github.com/DrFace/Kentralo-kenpanel/discussions) for general questions, troubleshooting, and architectural discussions.
+- **GitHub Issues**: Use [GitHub Issues](https://github.com/DrFace/Kentralo-kenpanel/issues) for verified bugs, compatibility reports, and feature requests.
 
 ## Self-Diagnostics
 

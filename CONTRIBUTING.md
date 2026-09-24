@@ -11,16 +11,16 @@ All contributors and maintainers are expected to adhere to our [Code of Conduct]
 ## How Can I Contribute?
 
 ### 1. Reporting Bugs
-- Verify the bug hasn't already been reported in [GitHub Issues](https://github.com/Kentralo/kenpanel/issues).
-- Use the structured [Bug Report Template](https://github.com/Kentralo/kenpanel/issues/new?template=bug_report.yml).
+- Verify the bug hasn't already been reported in [GitHub Issues](https://github.com/DrFace/Kentralo-kenpanel/issues).
+- Use the structured [Bug Report Template](https://github.com/DrFace/Kentralo-kenpanel/issues/new?template=bug_report.yml).
 - Include sanitized logs, OS details, reproduction steps, and expected vs. actual behavior.
 
 ### 2. Suggesting Features & Integrations
-- We welcome feature suggestions! Please submit them using our [Feature Request Template](https://github.com/Kentralo/kenpanel/issues/new?template=feature_request.yml) or [Integration Request Template](https://github.com/Kentralo/kenpanel/issues/new?template=integration_request.yml).
+- We welcome feature suggestions! Please submit them using our [Feature Request Template](https://github.com/DrFace/Kentralo-kenpanel/issues/new?template=feature_request.yml) or [Integration Request Template](https://github.com/DrFace/Kentralo-kenpanel/issues/new?template=integration_request.yml).
 - Explain the problem, proposed workflow, and target operating systems/providers.
 
 ### 3. Reporting OS & Software Compatibility
-- If you have verified KenPanel or its adapters on a specific Linux distribution, kernel version, or cloud provider, submit a report using the [Compatibility Report Template](https://github.com/Kentralo/kenpanel/issues/new?template=compatibility_report.yml).
+- If you have verified KenPanel or its adapters on a specific Linux distribution, kernel version, or cloud provider, submit a report using the [Compatibility Report Template](https://github.com/DrFace/Kentralo-kenpanel/issues/new?template=compatibility_report.yml).
 
 ### 4. Improving Documentation & Guides
 - Documentation lives in `docs/` and on [kenpanel.kentralo.com/guides](https://kenpanel.kentralo.com/guides).
@@ -38,7 +38,7 @@ All contributors and maintainers are expected to adhere to our [Code of Conduct]
 
 ### Building from Source
 ```bash
-git clone https://github.com/Kentralo/kenpanel.git
+git clone https://github.com/DrFace/Kentralo-kenpanel.git
 cd kenpanel
 make build
 ```

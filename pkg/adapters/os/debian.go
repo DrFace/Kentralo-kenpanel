@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Kentralo/kenpanel/pkg/protocol"
+	"github.com/DrFace/Kentralo-kenpanel/pkg/protocol"
 )
 
 // DebianAdapter implements the OSAdapter interface for Debian and Ubuntu distributions.

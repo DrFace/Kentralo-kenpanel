@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Kentralo/kenpanel/pkg/protocol"
+	"github.com/DrFace/Kentralo-kenpanel/pkg/protocol"
 )
 
 // RHELAdapter implements the OSAdapter interface for RHEL, AlmaLinux, and Rocky Linux.

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/Kentralo/kenpanel/pkg/engines/doctor"
+	"github.com/DrFace/Kentralo-kenpanel/pkg/engines/doctor"
 )
 
 // APIHandler aggregates REST API routes for KenPanel.

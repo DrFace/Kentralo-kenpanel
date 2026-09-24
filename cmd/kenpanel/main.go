@@ -9,10 +9,10 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/Kentralo/kenpanel/core/config"
-	"github.com/Kentralo/kenpanel/core/events"
-	"github.com/Kentralo/kenpanel/core/jobs"
-	"github.com/Kentralo/kenpanel/core/policy"
+	"github.com/DrFace/Kentralo-kenpanel/core/config"
+	"github.com/DrFace/Kentralo-kenpanel/core/events"
+	"github.com/DrFace/Kentralo-kenpanel/core/jobs"
+	"github.com/DrFace/Kentralo-kenpanel/core/policy"
 )
 
 func main() {

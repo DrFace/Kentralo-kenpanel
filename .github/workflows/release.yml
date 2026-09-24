@@ -1,0 +1,61 @@
+name: Release Assets & Binaries
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    name: Build & Release Multi-Arch Binaries
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goos: [linux, darwin]
+        goarch: [amd64, arm64]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache: true
+
+      - name: Compile Binaries (${{ matrix.goos }}/${{ matrix.goarch }})
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          CGO_ENABLED: 0
+        run: |
+          mkdir -p dist
+          EXT=""
+          if [ "${{ matrix.goos }}" = "windows" ]; then EXT=".exe"; fi
+          go build -ldflags="-s -w" -o dist/kenpanel${EXT} ./cmd/kenpanel
+          go build -ldflags="-s -w" -o dist/kenpanel-agent${EXT} ./cmd/kenpanel-agent
+          go build -ldflags="-s -w" -o dist/kenpanel-cli${EXT} ./cmd/kenpanel-cli
+          go build -ldflags="-s -w" -o dist/kenpanel-transplant${EXT} ./cmd/kenpanel-transplant
+          go build -ldflags="-s -w" -o dist/kenpanel-mailbridge${EXT} ./cmd/kenpanel-mailbridge
+          go build -ldflags="-s -w" -o dist/kenpanel-capsule${EXT} ./cmd/kenpanel-capsule
+          go build -ldflags="-s -w" -o dist/kenpanel-recovery${EXT} ./cmd/kenpanel-recovery
+
+      - name: Package Archives
+        run: |
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+          ARCHIVE_NAME="kenpanel-${TAG_NAME}-${{ matrix.goos }}-${{ matrix.goarch }}.tar.gz"
+          tar -czf ${ARCHIVE_NAME} -C dist .
+          sha256sum ${ARCHIVE_NAME} > ${ARCHIVE_NAME}.sha256
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            kenpanel-*.tar.gz
+            kenpanel-*.sha256
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

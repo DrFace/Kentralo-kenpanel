@@ -1,0 +1,54 @@
+name: Compatibility Report
+description: Submit evidence of OS, kernel, virtualization, or application stack compatibility with KenPanel.
+title: "[Compat]: "
+labels: ["compatibility", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Community compatibility reports help keep our official Compatibility Matrix accurate and reliable.
+  - type: input
+    id: os_version
+    attributes:
+      label: Operating System & Distribution Version
+      placeholder: "e.g., Debian 12 (Bookworm), AlmaLinux 9.4, Ubuntu 24.04 LTS"
+    validations:
+      required: true
+  - type: input
+    id: kernel_arch
+    attributes:
+      label: Kernel Version & Architecture
+      placeholder: "e.g., Linux 6.8.0-31-generic (x86_64) / Linux 6.6.0 (aarch64)"
+    validations:
+      required: true
+  - type: input
+    id: hypervisor_environment
+    attributes:
+      label: Environment / Hypervisor
+      placeholder: "e.g., KVM / Proxmox 8, AWS Nitro, Bare Metal, VMware ESXi"
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: Compatibility Result
+      options:
+        - "Fully Compatible (All tested features working)"
+        - "Partially Compatible (Minor workarounds needed)"
+        - "Incompatible / Blocked (Critical failures encountered)"
+    validations:
+      required: true
+  - type: textarea
+    id: tested_modules
+    attributes:
+      label: Tested Features & Capabilities
+      description: What components did you verify (Nginx, PHP 8.3, MariaDB, Docker, Firewall, ACME SSL)?
+    validations:
+      required: true
+  - type: textarea
+    id: notes_workarounds
+    attributes:
+      label: Notes or Workarounds
+      description: Describe any specific configurations, flags, or kernel parameters required.
+    validations:
+      required: false

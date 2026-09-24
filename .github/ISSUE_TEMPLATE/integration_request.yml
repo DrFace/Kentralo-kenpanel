@@ -1,0 +1,59 @@
+name: Integration Request
+description: Propose an integration with a third-party service, provider, DNS API, or hypervisor.
+title: "[Integration]: "
+labels: ["integration", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggest a provider, service, or tool integration for KenPanel.
+        **WARNING:** Never request or post credentials, API keys, or secrets publicly.
+  - type: input
+    id: provider_name
+    attributes:
+      label: Service or Provider Name
+      placeholder: "e.g., BunnyCDN, Cloudflare R2, Scaleway, PowerDNS API, Proxmox VE"
+    validations:
+      required: true
+  - type: input
+    id: docs_url
+    attributes:
+      label: Official Documentation / API Reference URL
+      placeholder: "https://docs.provider.example/api"
+    validations:
+      required: true
+  - type: dropdown
+    id: integration_category
+    attributes:
+      label: Integration Category
+      options:
+        - "Cloud Infrastructure / Compute Provider"
+        - "DNS Provider API"
+        - "Object / Block Storage Provider (S3 compatible)"
+        - "CDN / Edge Network"
+        - "Backup Destination"
+        - "Billing & Invoicing (WHMCS, Stripe, etc.)"
+        - "Hypervisor / Virtualization (KVM, Proxmox, Hyper-V)"
+        - "Notification / Webhook Target (Slack, Discord, Telegram)"
+    validations:
+      required: true
+  - type: textarea
+    id: auth_model
+    attributes:
+      label: Authentication Model
+      description: How does the provider authenticate (API Token, OAuth2, HMAC, Service Account JSON)?
+    validations:
+      required: true
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use Case & Example Workflow
+      description: How should KenPanel interact with this integration?
+    validations:
+      required: true
+  - type: checkboxes
+    id: testing
+    attributes:
+      label: Testing & Availability
+      options:
+        - label: I can provide feedback or test integration candidate releases

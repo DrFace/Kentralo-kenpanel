@@ -1,0 +1,125 @@
+name: Bug Report
+description: Report an error, defect, or unexpected behavior in KenPanel.
+title: "[Bug]: "
+labels: ["triage", "bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a problem in KenPanel!
+        **WARNING:** Never post sensitive credentials, API keys, private keys, passwords, or customer data in public issues.
+  - type: input
+    id: version
+    attributes:
+      label: KenPanel Version / Build
+      description: Run `kenpanel-cli version` or check the dashboard footer.
+      placeholder: "e.g., v2.3.0 (commit abc1234)"
+    validations:
+      required: true
+  - type: dropdown
+    id: install_method
+    attributes:
+      label: Installation Method
+      options:
+        - "Official curl bootstrap (install.sh)"
+        - "DEB package"
+        - "RPM package"
+        - "Source build"
+        - "RecoveryOS ISO"
+        - "Other"
+    validations:
+      required: true
+  - type: input
+    id: os_arch
+    attributes:
+      label: Operating System & Architecture
+      placeholder: "e.g., Ubuntu 24.04 LTS (x86_64) / AlmaLinux 9.4 (arm64)"
+    validations:
+      required: true
+  - type: dropdown
+    id: affected_module
+    attributes:
+      label: Affected Component or Module
+      options:
+        - "Control Plane / Web Dashboard"
+        - "Privileged Node Agent (kenpanel-agent)"
+        - "CLI (kenpanel-cli)"
+        - "WebStack / Nginx / Apache / PHP"
+        - "Databases (MySQL / PostgreSQL)"
+        - "Transplant / Server Clone"
+        - "MailBridge / Email"
+        - "App Capsule"
+        - "RecoveryOS / Disaster Kit / Docker Rescue"
+        - "WebStack Doctor / Guardians"
+        - "ChangeGuard / Transactions"
+        - "DNS / SSL / Certificates"
+        - "Firewall / Ports / Networking"
+        - "Other"
+    validations:
+      required: true
+  - type: input
+    id: provider
+    attributes:
+      label: Cloud Provider / Hypervisor (if applicable)
+      placeholder: "e.g., Hetzner Cloud, Proxmox VE 8.2, Bare Metal, AWS EC2"
+    validations:
+      required: false
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually occurred?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: List exact steps to reproduce the issue.
+      placeholder: |
+        1. Navigate to ...
+        2. Run command '...'
+        3. Observe error ...
+    validations:
+      required: true
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: Frequency
+      options:
+        - "Every time (100% reproducible)"
+        - "Frequently (intermittent)"
+        - "Rarely"
+        - "Once only"
+    validations:
+      required: true
+  - type: checkboxes
+    id: regression
+    attributes:
+      label: Regression
+      options:
+        - label: This worked in an earlier version of KenPanel
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized Logs / Error Output
+      description: Please paste relevant log output from `/var/log/kenpanel/` or `journalctl -u kenpanel`. Verify all IP addresses and credentials are redacted!
+      render: shell
+    validations:
+      required: false
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround (if discovered)
+      description: Have you found a temporary workaround?
+    validations:
+      required: false

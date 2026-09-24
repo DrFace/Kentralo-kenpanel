@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security Vulnerability Report
+    url: https://github.com/Kentralo/kenpanel/security/advisories/new
+    about: Privately disclose sensitive security vulnerabilities to our core team.
+  - name: Documentation & Guides Hub
+    url: https://kenpanel.kentralo.com/docs
+    about: Read the official documentation and task runbooks.
+  - name: Community Discussions
+    url: https://github.com/Kentralo/kenpanel/discussions
+    about: Ask questions, share ideas, and connect with other users.

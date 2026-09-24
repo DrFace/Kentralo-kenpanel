@@ -1,0 +1,30 @@
+name: Documentation Issue
+description: Report missing, incorrect, or confusing documentation or runbook guides.
+title: "[Docs]: "
+labels: ["documentation", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Accurate, task-oriented runbooks are essential to KenPanel. Thank you for reporting a documentation issue.
+  - type: input
+    id: page_url
+    attributes:
+      label: Documentation Page or Guide URL
+      placeholder: "https://kenpanel.kentralo.com/guides/webstack/..."
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem with Current Documentation
+      description: What is inaccurate, outdated, unclear, or missing?
+    validations:
+      required: true
+  - type: textarea
+    id: suggested_fix
+    attributes:
+      label: Suggested Correction or Improvement
+      description: If you have proposed text or commands, please provide them here.
+    validations:
+      required: false

@@ -1,0 +1,54 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [main, release-*]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache: true
+
+      - name: Verify Dependencies
+        run: go mod verify
+
+      - name: Run Unit Tests
+        run: go test -v -race -coverprofile=coverage.txt ./...
+
+      - name: Build Monorepo Binaries
+        run: |
+          go build -v -o bin/kenpanel ./cmd/kenpanel
+          go build -v -o bin/kenpanel-agent ./cmd/kenpanel-agent
+          go build -v -o bin/kenpanel-cli ./cmd/kenpanel-cli
+          go build -v -o bin/kenpanel-transplant ./cmd/kenpanel-transplant
+          go build -v -o bin/kenpanel-mailbridge ./cmd/kenpanel-mailbridge
+          go build -v -o bin/kenpanel-capsule ./cmd/kenpanel-capsule
+          go build -v -o bin/kenpanel-recovery ./cmd/kenpanel-recovery
+
+  lint:
+    name: Lint & Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest

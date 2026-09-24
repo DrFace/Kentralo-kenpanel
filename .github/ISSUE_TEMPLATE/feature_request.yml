@@ -1,0 +1,57 @@
+name: Feature Request
+description: Suggest an idea or enhancement for KenPanel.
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping shape KenPanel! Please share details about the problem you are solving and how the requested feature should behave.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem & Use Case
+      description: What problem are you trying to solve? Is your feature request related to a specific pain point?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Solution & Workflow
+      description: Describe what you would like to happen and how the user workflow should look.
+    validations:
+      required: true
+  - type: textarea
+    id: target_audience
+    attributes:
+      label: Who Benefits?
+      description: Who will use this feature (Sysadmins, hosting providers, developers, agencies)?
+    validations:
+      required: true
+  - type: dropdown
+    id: target_subsystem
+    attributes:
+      label: Primary Subsystem
+      options:
+        - "Core Control Plane & Dashboard"
+        - "Web Hosting & Runtimes"
+        - "PaaS / Containers / Stacks"
+        - "Migration Center (Transplant / Server Clone)"
+        - "MailBridge / Email Services"
+        - "App Capsule"
+        - "Recovery Center (RecoveryOS / Disaster Kit)"
+        - "Health / WebStack Doctor / Guardians"
+        - "Safe Changes (ChangeGuard / UpgradeLab)"
+        - "Intelligence (Server Blueprint / Dependency Map / Autopsy)"
+        - "Performance (Benchmark Lab)"
+        - "API & CLI"
+        - "Other"
+    validations:
+      required: true
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution Willingness
+      options:
+        - label: I am willing to test candidate builds of this feature
+        - label: I am willing to contribute code or pull requests for this feature

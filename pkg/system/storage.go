@@ -2,7 +2,6 @@ package system
 
 import (
 	"context"
-	"fmt"
 )
 
 // DiskDevice describes a physical block device.

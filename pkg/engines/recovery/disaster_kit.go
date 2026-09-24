@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"html"
 	"os"
+	"strconv"
 	"strings"
-	"time"
 )
 
 // DisasterKitManifest represents the full machine-readable disaster inventory.
@@ -56,7 +56,7 @@ type DisasterKitGenerator struct {
 
 // NewDisasterKitGenerator initializes generator.
 func NewDisasterKitGenerator(m DisasterKitManifest) *DisasterKitGenerator {
-	if m.RestoreOrder == nil || len(m.RestoreOrder) == 0 {
+	if len(m.RestoreOrder) == 0 {
 		m.RestoreOrder = []string{
 			"1. Provision host OS and base packages",
 			"2. Install KenPanel agent / runtime dependencies",
@@ -80,7 +80,9 @@ func (g *DisasterKitGenerator) GenerateHTMLRunbook() string {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KenPanel Disaster Recovery Runbook — ` + html.EscapeString(m.Hostname) + `</title>
+<title>KenPanel Disaster Recovery Runbook — `)
+	sb.WriteString(html.EscapeString(m.Hostname))
+	sb.WriteString(`</title>
 <style>
   :root { --bg: #090d16; --card: #111827; --text: #f3f4f6; --muted: #9ca3af; --accent: #2563eb; --border: #1f2937; --success: #10b981; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 2rem; line-height: 1.6; }
@@ -103,8 +105,14 @@ func (g *DisasterKitGenerator) GenerateHTMLRunbook() string {
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
     <div>
       <span class="badge badge-primary">Offline Disaster Runbook</span>
-      <h1>` + html.EscapeString(m.Hostname) + `</h1>
-      <p style="color: var(--muted); margin: 0;">Generated: ` + html.EscapeString(m.GeneratedAt) + ` | KenPanel ` + html.EscapeString(m.KenPanelVersion) + `</p>
+      <h1>`)
+	sb.WriteString(html.EscapeString(m.Hostname))
+	sb.WriteString(`</h1>
+      <p style="color: var(--muted); margin: 0;">Generated: `)
+	sb.WriteString(html.EscapeString(m.GeneratedAt))
+	sb.WriteString(` | KenPanel `)
+	sb.WriteString(html.EscapeString(m.KenPanelVersion))
+	sb.WriteString(`</p>
     </div>
     <span class="badge badge-success">Self-Contained</span>
   </div>
@@ -115,14 +123,18 @@ func (g *DisasterKitGenerator) GenerateHTMLRunbook() string {
 `)
 
 	for _, step := range m.RestoreOrder {
-		sb.WriteString("      <li>" + html.EscapeString(step) + "</li>\n")
+		sb.WriteString("      <li>")
+		sb.WriteString(html.EscapeString(step))
+		sb.WriteString("</li>\n")
 	}
 
 	sb.WriteString(`    </ol>
   </div>
 
   <div class="card">
-    <h2>2. Inventory: Websites & Applications (` + fmt.Sprintf("%d", len(m.Websites)) + `)</h2>
+    <h2>2. Inventory: Websites & Applications (`)
+	sb.WriteString(strconv.Itoa(len(m.Websites)))
+	sb.WriteString(`)</h2>
     <table>
       <thead>
         <tr><th>Domain</th><th>Document Root</th><th>Webserver</th><th>Runtime</th><th>Database</th></tr>
@@ -131,14 +143,14 @@ func (g *DisasterKitGenerator) GenerateHTMLRunbook() string {
 `)
 
 	for _, w := range m.Websites {
-		sb.WriteString(fmt.Sprintf("        <tr><td><strong>%s</strong></td><td><code>%s</code></td><td>%s</td><td>%s %s</td><td><code>%s</code></td></tr>\n",
+		fmt.Fprintf(&sb, "        <tr><td><strong>%s</strong></td><td><code>%s</code></td><td>%s</td><td>%s %s</td><td><code>%s</code></td></tr>\n",
 			html.EscapeString(w.Domain),
 			html.EscapeString(w.DocumentRoot),
 			html.EscapeString(w.Webserver),
 			html.EscapeString(w.Runtime),
 			html.EscapeString(w.RuntimeVer),
 			html.EscapeString(w.DatabaseName),
-		))
+		)
 	}
 
 	sb.WriteString(`      </tbody>
@@ -146,7 +158,9 @@ func (g *DisasterKitGenerator) GenerateHTMLRunbook() string {
   </div>
 
   <div class="card">
-    <h2>3. Inventory: Databases (` + fmt.Sprintf("%d", len(m.Databases)) + `)</h2>
+    <h2>3. Inventory: Databases (`)
+	sb.WriteString(strconv.Itoa(len(m.Databases)))
+	sb.WriteString(`)</h2>
     <table>
       <thead>
         <tr><th>Database Name</th><th>Engine</th><th>Size (Bytes)</th></tr>
@@ -155,11 +169,11 @@ func (g *DisasterKitGenerator) GenerateHTMLRunbook() string {
 `)
 
 	for _, db := range m.Databases {
-		sb.WriteString(fmt.Sprintf("        <tr><td><code>%s</code></td><td>%s</td><td>%d</td></tr>\n",
+		fmt.Fprintf(&sb, "        <tr><td><code>%s</code></td><td>%s</td><td>%d</td></tr>\n",
 			html.EscapeString(db.Name),
 			html.EscapeString(db.Engine),
 			db.SizeBytes,
-		))
+		)
 	}
 
 	sb.WriteString(`      </tbody>
@@ -168,7 +182,9 @@ func (g *DisasterKitGenerator) GenerateHTMLRunbook() string {
 
   <div class="card">
     <h2>4. Offline Verification & Integrity</h2>
-    <p>Kit Manifest SHA256 Checksum: <code>` + html.EscapeString(m.ChecksumSHA256) + `</code></p>
+    <p>Kit Manifest SHA256 Checksum: <code>`)
+	sb.WriteString(html.EscapeString(m.ChecksumSHA256))
+	sb.WriteString(`</code></p>
     <p>To verify offline using KenPanel CLI:</p>
     <pre><code>kenpanel disaster-kit verify --manifest disaster-kit-manifest.json</code></pre>
   </div>

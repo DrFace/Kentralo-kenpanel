@@ -1,15 +1,7 @@
 package capsule
 
 import (
-	"archive/tar"
-	"bytes"
-	"compress/gzip"
-	"context"
-	"crypto/sha256"
-	"encoding/hex"
-	"encoding/json"
 	"fmt"
-	"io"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -139,7 +131,7 @@ func (p *CapsulePackager) BuildManifest(appName string, envContent string) *Caps
 		AppName:        appName,
 		CreatedAt:      time.Now().UTC().Format(time.RFC3339),
 		Runtime:        rt,
-		RuntimeVer:     ver,
+		RuntimeVersion: ver,
 		Entrypoint:     entry,
 		DocumentRoot:   docRoot,
 		Dependencies:   []string{},

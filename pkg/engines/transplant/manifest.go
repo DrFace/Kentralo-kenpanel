@@ -69,3 +69,48 @@ type CronJobManifest struct {
 	Command  string `json:"command"`
 	User     string `json:"user"`
 }
+
+// ManifestV1 models the normalized discovery parser output format.
+type ManifestV1 struct {
+	Version    string                 `json:"version"`
+	ExportedAt string                 `json:"exported_at"`
+	SourceType string                 `json:"source_type"`
+	SourceHost string                 `json:"source_host"`
+	Websites   []WebsiteResource      `json:"websites"`
+	Databases  []DatabaseResource     `json:"databases"`
+	Mailboxes  []MailboxResource      `json:"mailboxes"`
+	DNSZones   []DNSZoneResource      `json:"dns_zones"`
+	Metadata   map[string]interface{} `json:"metadata"`
+}
+
+type WebsiteResource struct {
+	ID           string `json:"id"`
+	Domain       string `json:"domain"`
+	DocumentRoot string `json:"document_root"`
+	Runtime      string `json:"runtime"`
+	RuntimeVer   string `json:"runtime_ver"`
+	Webserver    string `json:"webserver"`
+	SSL          bool   `json:"ssl"`
+}
+
+type DatabaseResource struct {
+	ID        string `json:"id"`
+	Name      string `json:"name"`
+	Engine    string `json:"engine"`
+	Charset   string `json:"charset"`
+	DumpPath  string `json:"dump_path"`
+	SizeBytes int64  `json:"size_bytes"`
+}
+
+type MailboxResource struct {
+	ID      string `json:"id"`
+	Email   string `json:"email"`
+	Domain  string `json:"domain"`
+	QuotaMB int    `json:"quota_mb"`
+	Format  string `json:"format"`
+}
+
+type DNSZoneResource struct {
+	Domain  string `json:"domain"`
+	RawZone string `json:"raw_zone"`
+}

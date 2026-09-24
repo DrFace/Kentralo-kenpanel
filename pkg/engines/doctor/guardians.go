@@ -4,8 +4,6 @@ import (
 	"context"
 	"fmt"
 	"os"
-	"strings"
-	"time"
 )
 
 // GuardianIssue represents a diagnostic finding by a guardian.

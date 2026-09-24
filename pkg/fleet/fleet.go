@@ -1,7 +1,6 @@
 package fleet
 
 import (
-	"context"
 	"fmt"
 	"sync"
 	"time"

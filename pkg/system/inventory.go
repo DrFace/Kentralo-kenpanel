@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"os"
 	"runtime"
-	"strings"
-	"time"
 )
 
 // ServerInventory represents complete hardware, OS, and resource metrics.

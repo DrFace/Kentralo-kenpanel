@@ -2,17 +2,12 @@ package rpc
 
 import (
 	"context"
-	"crypto/tls"
-	"crypto/x509"
 	"errors"
 	"fmt"
-	"io"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 	"sync"
-	"time"
 )
 
 // Standard operation names permitted by the typed RPC interface.

@@ -131,6 +131,9 @@ func (p *CPanelDiscoveryParser) Parse(ctx context.Context) (*ManifestV1, error) 
 							emailAccounts = append(emailAccounts, user+"@"+emailDomain)
 						}
 					}
+					if err := scanner.Err(); err != nil {
+						return nil, fmt.Errorf("reading shadow file %s: %w", name, err)
+					}
 				}
 			}
 		}
@@ -306,6 +309,10 @@ func (p *PleskDiscoveryParser) Parse(ctx context.Context) (*ManifestV1, error) {
 				Format:  "maildir",
 			})
 		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		return nil, fmt.Errorf("reading plesk archive: %w", err)
 	}
 
 	manifest.Metadata["total_websites"] = len(manifest.Websites)

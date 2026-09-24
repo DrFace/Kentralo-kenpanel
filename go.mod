@@ -1,4 +1,4 @@
-module github.com/Kentralo/kenpanel
+module github.com/DrFace/Kentralo-kenpanel
 
 go 1.23.0
 

@@ -21,6 +21,9 @@ jobs:
         with:
           go-version: '1.23'
 
+      - name: Prepare Dependencies
+        run: go mod tidy
+
       - name: Run govulncheck
         uses: golang/govulncheck-action@v1
         with:

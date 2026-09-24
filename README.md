@@ -4,8 +4,14 @@
 > A free, open-source, self-hosted unified control plane for hosting, servers, applications, containers, virtualization, multi-server fleets, and cloud infrastructure.
 
 [![License](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/badge/release-v2.3.0-green.svg)](https://kenpanel.kentralo.com/releases)
+[![Architecture Spec](https://img.shields.io/badge/spec-v2.3.0-purple.svg)](https://kenpanel.kentralo.com/architecture)
+[![Software Status](https://img.shields.io/badge/status-v0.1.0--alpha%20preview-amber.svg)](https://kenpanel.kentralo.com/roadmap)
 [![Website](https://img.shields.io/badge/website-kenpanel.kentralo.com-blue)](https://kenpanel.kentralo.com)
+[![Build & Test](https://github.com/DrFace/Kentralo-kenpanel/actions/workflows/ci.yml/badge.svg)](https://github.com/DrFace/Kentralo-kenpanel/actions)
+
+> [!IMPORTANT]
+> **Project Status: Early Development (Phase 1 In Progress)**  
+> The KenPanel v2.3 Architecture Specification is complete. Core hosting functionality, OS adapters, and daemon subsystems are actively under construction in Phase 1 (Q4 2026). This software is not yet recommended for mission-critical production servers. Review the [Public Roadmap](https://kenpanel.kentralo.com/roadmap) for detailed milestone tracking.
 
 ---
 
@@ -16,7 +22,7 @@ KenPanel combines traditional web hosting management (cPanel, Plesk, CyberPanel,
 - **100% Free & Open Source**: No licenses, subscriptions, paywalls, or activation servers.
 - **Truly Self-Hosted**: Runs entirely on your own infrastructure; no forced dependency on KenPanel Cloud.
 - **Privacy & Telemetry**: Zero forced tracking, ads, or analytics in the installed software.
-- **Multi-Server Architecture**: Control hundreds of Linux and Windows nodes from a unified dashboard.
+- **Multi-Server Architecture**: Designed to control hundreds of Linux and Windows nodes from a unified dashboard.
 - **Privilege Separated**: Web UI runs as an unprivileged user; the privileged node daemon communicates via secure, typed RPC over mTLS or local Unix socket.
 
 ---
